@@ -1,13 +1,26 @@
-please help to create reactjs ui with .net 8 minimal api project. this project is to help kids to practice spellings test. 
+# Spelling App
 
-feature:
-1. user upload spelling test, usually image with 10 words. need to cater for multiple languges like chinese, english and malay. use openai to extract words.
-2. review by user and save as one lesson
-3. start lesson by understand the word, with small story and an image. using openai to generate
-4. next is listen, click big icon to listen the word.
-5. next is speaking, click big icon to speak and give mark. using openai to give mark.
-6. next is writing, create 3 line box to handwriting practice for english and malay. chinese character handwriting box for chinese charcter. Give mark via openai for most looks like word.
-7. next is repeat push notification based on memory curve theory. you may have short story to explain why repeat is important. 
-8. pop up done the lesson, good job animation. 
+This repository contains a .NET 8 minimal API and a React frontend to help kids practice spellings.
 
-you acting like UIUX design make this application attractive to kids with colorful design. refine this requirements to me # spelling-app
+## Backend
+
+The backend is located in the `SpellingApi` folder and exposes minimal endpoints for lessons:
+
+- `POST /api/lessons/upload` – upload an image and extract words (placeholder for OpenAI OCR).
+- `POST /api/lessons` – save or update a lesson.
+- `GET /api/lessons/{id}` – retrieve a lesson with generated content.
+- `POST /api/lessons/{id}/speech` – grade speech result.
+- `POST /api/lessons/{id}/handwriting` – grade handwriting result.
+
+The solution file `SpellingApp.sln` includes the API project.
+
+## Frontend
+
+The React app resides in `frontend/spelling-ui`. It contains a simple step-based UI and service worker for push notifications.
+
+The application steps are:
+1. upload ➜ 2. review ➜ 3. story ➜ 4. listen ➜ 5. speak ➜ 6. write ➜ 7. repeat.
+
+API calls are implemented in `src/api.js`.
+
+> **Note:** This repository contains only skeleton code and does not fetch dependencies or run build scripts in this environment.
